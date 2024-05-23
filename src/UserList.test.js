@@ -1,4 +1,4 @@
-import {render, screen} from "@testing-library/react";
+import {render, screen, within} from "@testing-library/react";
 import UserList from "./UserList";
 
 test('render one row per user', ()=>{
@@ -8,7 +8,7 @@ test('render one row per user', ()=>{
     ]
     render(<UserList users={users} />);
 
-    const rows = screen.getAllByRole('row');
+    const rows = within(screen.getByTestId('users')).getAllByRole('row')
 
     expect(rows).toHaveLength(2)
 })
