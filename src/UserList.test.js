@@ -6,9 +6,9 @@ test('render one row per user', ()=>{
         {name: "John", email: "john@example.com"},
         {name: "Jane", email: "Jane@example.com"},
     ]
-    render(<UserList users={users} />);
+    const {container} = render(<UserList users={users} />);
 
-    const rows = within(screen.getByTestId('users')).getAllByRole('row')
+    const rows = container.querySelectorAll('tbody tr');
 
     expect(rows).toHaveLength(2)
 })
